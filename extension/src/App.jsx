@@ -5,7 +5,7 @@ import { FilesetResolver, GestureRecognizer } from "@mediapipe/tasks-vision";
 import Header from "./components/Header";
 import Legend from "./components/Legend";
 import PermissionScreen from "./components/PermissionScreen";
-import { sendCommandToYouTube, getCurrentTabUrl, getYoutubeCurrentTime } from "./utils/youtube";
+import { sendCommandToGmail } from "./utils/gmail";
 import "./App.css";
 import "./gdm/gdm-live-audio";
 
@@ -138,41 +138,25 @@ export default function App() {
     let commandSent = false;
     switch (gesture) {
       case "Open_Palm":
-        window.speechSynthesis.cancel();
-        setStatusText("Paused");
-        sendCommandToYouTube("pause");
+        setStatusText("Compose Mail");
+        sendCommandToGmail("compose");
         commandSent = true; break;
       case "Closed_Fist":
-        setStatusText("Playing");
-        sendCommandToYouTube("play");
+        setStatusText("Send Mail");
+        sendCommandToGmail("send");
         commandSent = true; break;
-      case "Victory":
-        if (now - lastSpeedToggleTime.current > 2000) {
-          setStatusText("Speed Toggled");
-          sendCommandToYouTube("toggleSpeed");
-          lastSpeedToggleTime.current = now;
-          commandSent = true;
-        } break;
       case "Thumb_Up":
-        setStatusText("+10s");
-        sendCommandToYouTube("seek", 10);
+        setStatusText("Next Mail");
+        sendCommandToGmail("next");
         commandSent = true; break;
       case "Thumb_Down":
-        setStatusText("-10s");
-        sendCommandToYouTube("seek", -10);
-        commandSent = true; break;
-      case "ILoveYou":
-        setStatusText("Skipping");
-        sendCommandToYouTube("skip");
+        setStatusText("Previous Mail");
+        sendCommandToGmail("prev");
         commandSent = true; break;
       case "Pointing_Up":
-        if (now - lastAskAITime.current > 5000) {
-          console.log("Gesture detected: Pointing_Up");
-          setStatusText("☝️ Ask AI detected");
-          lastAskAITime.current = now;
-          handleAskAI();
-        }
-        break;
+        setStatusText("Voice Dictation");
+        sendCommandToGmail("voice");
+        commandSent = true; break;
       default: break;
     }
     if (commandSent) lastCommandTime.current = now;

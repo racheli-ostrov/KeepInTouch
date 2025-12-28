@@ -1,13 +1,11 @@
 import React from 'react';
 
 const items = [
-  { icon: "✋", text: "Pause" },
-  { icon: "✊", text: "Play" },
-  { icon: "✌️", text: "Speed" },
-  { icon: "👍", text: "+10s" },
-  { icon: "👎", text: "-10s" },
-  { icon: "🤟", text: "Next" },
-  { icon: "☝️", text: "Ask AI" },
+  { icon: "✋", text: "Compose Email" },
+  { icon: "✊", text: "Send Email" },
+  { icon: "👍", text: "Next Email" },
+  { icon: "👎", text: "Previous Email" },
+  { icon: "☝️", text: "Voice Dictation" },
 ];
 
 export default function Legend() {
