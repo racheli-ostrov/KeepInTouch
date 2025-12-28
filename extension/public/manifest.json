@@ -5,9 +5,9 @@
   "description": "KEEPINTOUCH: Where hand gestures meet Gmail.",
   "permissions": ["activeTab", "scripting"],
   "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
+    "16": "icons/heart16.png",
+    "48": "icons/heart48.png",
+    "128": "icons/heart128.png"
   },
   "host_permissions": ["<all_urls>"],
   "action": {
